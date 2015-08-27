@@ -233,6 +233,37 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1fa018258b249e54385d971857f07d08, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &248016627 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100002, guid: 1fa018258b249e54385d971857f07d08, type: 3}
+  m_PrefabInternal: {fileID: 226318456}
+--- !u!64 &248016631
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 248016627}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: 1fa018258b249e54385d971857f07d08, type: 3}
+--- !u!54 &248016632
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 248016627}
+  serializedVersion: 2
+  m_Mass: 100
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &749832260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,6 +1064,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 446814, guid: 4a35e9104d9d93f4e8292983a4712590, type: 2}
       propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9513974, guid: 4a35e9104d9d93f4e8292983a4712590, type: 2}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9513974, guid: 4a35e9104d9d93f4e8292983a4712590, type: 2}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 13661336, guid: 4a35e9104d9d93f4e8292983a4712590, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 439bd8f24a4553148b1d8033a9aa1450,
+        type: 2}
+    - target: {fileID: 13661336, guid: 4a35e9104d9d93f4e8292983a4712590, type: 2}
+      propertyPath: m_Height
+      value: 1.89999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 9513974, guid: 4a35e9104d9d93f4e8292983a4712590, type: 2}
+      propertyPath: m_UpdateMode
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -1526,7 +1526,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170686}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -51.0030098, y: 36.2817001, z: -28.0850449}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 475624}
@@ -2018,7 +2018,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d7f6ec93892ae3c4fbf519adb164ffb1, type: 3}
   m_Controller: {fileID: 9100000, guid: 5c20ef46788b0e44f9b0d36e962c1f7f, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -2031,11 +2031,11 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170686}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 439bd8f24a4553148b1d8033a9aa1450, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: .400000006
-  m_Height: 2
+  m_Height: 1.89999998
   m_Direction: 1
   m_Center: {x: 0, y: .970000029, z: 0}
 --- !u!137 &13747928
