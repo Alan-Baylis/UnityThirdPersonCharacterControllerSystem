@@ -8,8 +8,14 @@ public class BasicController02 : MonoBehaviour {
     private CharacterController controller;
     public float transitionTime = 0.25f;
 
+    public float jumpSpeed = 4.0f;
+    public float gravity = 20.0f;
+    public float jumpPos = 0.0f;
+    private float verticalSpeed = 0;
+    private float xVelocity = 0.0f;
+    private float zVelocity = 0.0f;
 
-    float accelerator = 1.0f;
+    float accelerator;
     float horizontal;
     float vertical;
     float xSpeed;
@@ -29,18 +35,47 @@ public class BasicController02 : MonoBehaviour {
 	void Update () {
         if (controller.isGrounded)
         {
-            if (Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.Space))
             {
-                accelerator = 2.0f;
-            }
-            else if (Input.GetKey(KeyCode.RightAlt) || Input.GetKey(KeyCode.LeftAlt))
-            {
-                accelerator = 1.5f;
+                animator.SetBool("Jump", true);
+                verticalSpeed = jumpSpeed;
             }
             else
             {
-                accelerator = 1.0f;
+                animator.SetBool("Jump", false);
             }
+            if (Input.GetKey(KeyCode.Q))
+            {
+                animator.SetBool("TurnLeft", true);
+                transform.Rotate(Vector3.up * (Time.deltaTime * -45.0f), Space.World);
+            }
+            else
+            {
+                animator.SetBool("TurnLeft", false);
+            }
+            if (Input.GetKey(KeyCode.E))
+            {
+                animator.SetBool("TurnRight", true);
+                transform.Rotate(Vector3.up * (Time.deltaTime * 45.0f), Space.World);
+            }
+            else
+            {
+                animator.SetBool("TurnRight", false);
+            }
+            if (Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift))
+            {
+                accelerator = 5.0f;
+            }
+            else if (Input.GetKey(KeyCode.RightAlt) || Input.GetKey(KeyCode.LeftAlt))
+            {
+                accelerator = 4.0f;
+            }
+            else
+            {
+                accelerator = 3.0f;
+            }
+
+            //Moving A Character
             //Get horizontal Axis
             horizontal = Input.GetAxis("Horizontal");
             //Get vertical Axis
@@ -58,5 +93,52 @@ public class BasicController02 : MonoBehaviour {
             //
             //transform.Rotate(Vector3.up * (Time.deltaTime * vertical * Input.GetAxis("Mouse X") * 90), Space.World);
         }
+        //Firing and throwing Grenade
+        if (Input.GetKey(KeyCode.F))
+        {
+            Debug.Log("F is pressing");
+            animator.SetBool("Grenade", true);
+        }
+        else
+        {
+            animator.SetBool("Grenade", false);
+        }
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Debug.Log("Firing");
+            animator.SetBool("Fire", true);
+        }
+        else
+        {
+            animator.SetBool("Fire", false);
+        }
 	}
+    
+    void OnAnimatorMove()
+    {
+        Vector3 deltaPosition = animator.deltaPosition;
+        if (controller.isGrounded)
+        {
+            xVelocity = animator.GetFloat("Speed") * controller.velocity.x * 0.25f;
+            zVelocity = animator.GetFloat("Speed") * controller.velocity.z * 0.25f;
+        }
+        verticalSpeed += Physics.gravity.y * Time.deltaTime;
+        if (verticalSpeed <= 0)
+        {
+            animator.SetBool("Jump", false);
+        }
+        deltaPosition.y = verticalSpeed * Time.deltaTime;
+        if (controller.isGrounded)
+        {
+            deltaPosition.x = xVelocity * Time.deltaTime;
+            deltaPosition.z = zVelocity * Time.deltaTime;
+        }
+        controller.Move(deltaPosition);
+        if ((controller.collisionFlags & CollisionFlags.Below) != 0)
+        {
+            verticalSpeed = 0;
+        }
+        transform.rotation = animator.rootRotation;
+    }
+     
 }
