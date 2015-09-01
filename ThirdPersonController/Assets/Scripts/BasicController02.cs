@@ -96,7 +96,7 @@ public class BasicController02 : MonoBehaviour {
         //Firing and throwing Grenade
         if (Input.GetKey(KeyCode.F) && animator.layerCount >= 2)
         {
-            Debug.Log("F is pressing");
+            
             animator.SetBool("Grenade", true);
         }
         else

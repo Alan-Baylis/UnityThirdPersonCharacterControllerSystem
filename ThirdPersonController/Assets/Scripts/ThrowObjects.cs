@@ -31,10 +31,12 @@ public class ThrowObjects : MonoBehaviour {
             
             if (stateInfo.normalizedTime >= lengthPrepare * 0.01 && !prepared)
             {
+                //Debug.Log("Prepare function");
                 Prepare();
             }
             if (stateInfo.normalizedTime >= lengthThrow * 0.01 && !threw)
             {
+                //Debug.Log("Throw function");
                 Throw();
             }
             else
@@ -48,13 +50,10 @@ public class ThrowObjects : MonoBehaviour {
     {
         prepared = true;
         projectile = Instantiate(projectile, characterHand.position, characterHand.rotation) as GameObject;
-        Debug.Log("Projectile = " + projectile);
-        if (projectile.GetComponent<Rigidbody>())
-        {
+        if (projectile.GetComponent<Rigidbody>())   
             Destroy(projectile.GetComponent<Rigidbody>());
-        }
         projectile.GetComponent<SphereCollider>().enabled = false;
-        projectile.name = "Projectile";
+        projectile.name = "projectile";
         projectile.transform.parent = characterHand;
         projectile.transform.localPosition = projectileOffset;
         projectile.transform.localEulerAngles = Vector3.zero;
