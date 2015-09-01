@@ -94,7 +94,7 @@ public class BasicController02 : MonoBehaviour {
             //transform.Rotate(Vector3.up * (Time.deltaTime * vertical * Input.GetAxis("Mouse X") * 90), Space.World);
         }
         //Firing and throwing Grenade
-        if (Input.GetKey(KeyCode.F))
+        if (Input.GetKey(KeyCode.F) && animator.layerCount >= 2)
         {
             Debug.Log("F is pressing");
             animator.SetBool("Grenade", true);
@@ -103,7 +103,7 @@ public class BasicController02 : MonoBehaviour {
         {
             animator.SetBool("Grenade", false);
         }
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && animator.layerCount >= 2)
         {
             Debug.Log("Firing");
             animator.SetBool("Fire", true);
@@ -113,7 +113,8 @@ public class BasicController02 : MonoBehaviour {
             animator.SetBool("Fire", false);
         }
 	}
-    
+    //Method for overriding the animation's original root motion (Callback function)
+    //Not clear yet 
     void OnAnimatorMove()
     {
         Vector3 deltaPosition = animator.deltaPosition;
@@ -128,7 +129,7 @@ public class BasicController02 : MonoBehaviour {
             animator.SetBool("Jump", false);
         }
         deltaPosition.y = verticalSpeed * Time.deltaTime;
-        if (controller.isGrounded)
+        if (!controller.isGrounded)
         {
             deltaPosition.x = xVelocity * Time.deltaTime;
             deltaPosition.z = zVelocity * Time.deltaTime;
